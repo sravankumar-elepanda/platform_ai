@@ -1,0 +1,14 @@
+ credentials:
+  usernames:
+    selepand@cisco.com:
+      name: Sravan Kumar E
+      password: $2b$12$KIX2EwSz1IHdqA7dJjA6yOZnFeJ0MB9Qp7gP2B5GHw3Gx4o9rHKmK # 'YourStrongPassword' hashed with bcrypt
+      role: Admin
+    john@doe.com:
+      name: John Doe
+      password: $2b$12$QFZcZyffXo7t85w8hOcQdOq3/EKlh0aXb5b6PGq3jzn5ppGW6CzQS # 'AnotherPassword'
+      role: Registered
+cookie:
+  name: aiassethub
+  key: some_signature_key
+  expiry_days: 30
