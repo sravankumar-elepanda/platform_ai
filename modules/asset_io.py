@@ -10,3 +10,4 @@ def load_assets(assets_file='data/assets.json'):
 def save_assets(data, assets_file='data/assets.json'):
     with open(assets_file, "w") as f:
         json.dump(data, f, indent=2)
+
