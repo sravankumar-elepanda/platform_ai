@@ -13,7 +13,11 @@ LOGO_PATH = "static/cisco_logo.png"
 # 2. Authenticator
 config = load_auth_config('config/users.yaml')
 authenticator = get_authenticator(config)
-name, auth_status, username = authenticator.login(location='main')
+#name, auth_status, username = authenticator.login(location='main')
+login_return = authenticator.login(location='main')
+if not login_return:
+    st.stop()
+name, auth_status, username = login_return
 st.sidebar.markdown("---")
 
 # Helper values
