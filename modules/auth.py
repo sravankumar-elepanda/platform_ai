@@ -1,10 +1,9 @@
-import streamlit_authenticator as stauth
 import yaml
+import streamlit_authenticator as stauth
 
-def load_auth_config(users_file='config/users.yaml'):
-    with open(users_file) as f:
-        config = yaml.safe_load(f)
-    return config
+def load_auth_config(path):
+    with open(path) as f:
+        return yaml.safe_load(f)
 
 def get_authenticator(config):
     return stauth.Authenticate(
@@ -14,4 +13,3 @@ def get_authenticator(config):
         config['cookie']['expiry_days'],
         config['cookie'].get('path', '/')
     )
-
