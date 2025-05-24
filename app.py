@@ -1,19 +1,34 @@
 import streamlit as st
 from modules.auth import load_auth_config, get_authenticator
+import os
 
 st.set_page_config("AI Asset Hub", layout="wide", page_icon="🤖")
-config = load_auth_config('config/users.yaml')
-authenticator = get_authenticator(config)
 
-login_return = authenticator.login(location='main')
+# Show CWD and list files for debug
+st.write("CWD:", os.getcwd())
+st.write("FILES in CWD:", os.listdir())
 
-if login_return:
+try:
+    config = load_auth_config('config/users.yaml')
+    st.write("Loaded config:", config)
+except Exception as e:
+    st.error(f"Error loading config: {e}")
+
+try:
+    authenticator = get_authenticator(config)
+    st.write("Authenticator created.")
+except Exception as e:
+    st.error(f"Error creating authenticator: {e}")
+
+try:
+    login_return = authenticator.login(location='main')
+    st.write("login_return:", login_return)
+except Exception as e:
+    st.error(f"Error in login: {e}")
+
+if 'login_return' in locals() and login_return:
     name, auth_status, username = login_return
-    if auth_status:
-        st.success(f"Logged in as {username}!")
-        # Continue to your app logic
-    else:
-        st.warning("Login failed. Please try again.")
+    st.success(f"Logged in as {username}!")
+    st.write("auth_status:", auth_status)
 else:
-    # Don't show anything here except login (Streamlit Authenticator will render the login form)
-    pass
+    st.info("Please login.")
