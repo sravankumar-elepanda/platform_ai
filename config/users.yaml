@@ -2,7 +2,7 @@ credentials:
   usernames:
     selepand@cisco.com:
       name: Sravan Kumar E
-      password: password
+      password: $2b$12$Xy84zbiUf6YjPdhSLDHcZ.8rEnQ4KXZbGmpAjOrF1OiDdrz7s.lZy
       role: Admin
     john@doe.com:
       name: John Doe
